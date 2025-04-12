@@ -2,7 +2,6 @@ import m from 'mithril';
 import z from 'zod';
 import * as schema from '../schema/index.js';
 import * as util from '../util/index.js';
-import * as type from '../types.js';
 
 /**
  * @typedef {object} TagCollectionOptions

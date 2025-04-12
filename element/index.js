@@ -13,6 +13,6 @@ export * from './Table.class.js';
 export * from './TableCell.class.js';
 export * from './TableRow.class.js';
 export * from './Tag.class.js';
-export * from './TagCollection.class.mjs';
+export * from './TagCollection.class.js';
 export * from './TagGroup.class.mjs';
 export * from './Title.class.js';

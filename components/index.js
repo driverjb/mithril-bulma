@@ -1,2 +1,2 @@
-export * from './BreadcrumbEntry.class';
-export * from './Breadcrumbs.class';
+export * from './BreadcrumbEntry.class.js';
+export * from './Breadcrumbs.class.js';
