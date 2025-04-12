@@ -37,7 +37,12 @@ export class Icon {
    */
   constructor(vnode) {
     const att = iconSchema.parse(vnode.attrs);
-    this.wrapperClass = util.joinClass([att.classWrapper, 'icon', att.color]);
+    this.wrapperClass = util.joinClass([
+      att.classWrapper,
+      'icon',
+      att.color,
+      'mb-child-pointer-events-none'
+    ]);
     if (att.size && att.sizeManual)
       throw new Error('You may only use one size indicator: size or sizeManual');
     if (att.iconRegular) {
@@ -63,8 +68,12 @@ export class Icon {
   view({ children }) {
     return m(
       'span',
-      { class: this.wrapperClass },
-      m('i', { class: this.iconClass }),
+      {
+        class: this.wrapperClass
+      },
+      m('i', {
+        class: this.iconClass
+      }),
       children
         ? children.map((c) => {
             if (typeof c === 'string') return m('span', c);
