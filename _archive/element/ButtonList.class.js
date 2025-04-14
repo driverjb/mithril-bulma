@@ -27,16 +27,29 @@ const buttonGroupSchema = z.object({
  *
  * Ref: https://bulma.io/documentation/elements/button/#list-of-buttons
  */
-export class ButtonList {
+export const ButtonList = {
   /**
-   *
-   * @param {m.Vnode<ButtonListOptions>} vnode
+   * @param {m.Vnode<ButtonListOptions, {attrs: ButtonListOptions}>} vnode
    */
-  constructor(vnode) {
+  oninit(vnode) {
     const att = buttonGroupSchema.parse(vnode.attrs);
-    this.class = util.joinClass(['buttons', att.align, att.connected, att.class, att.size]);
+    att.class = util.joinClass(['buttons', att.align, att.connected, att.class, att.size]);
+    vnode.state.attrs = att;
+  },
+  /**
+   * @param {m.Vnode<ButtonListOptions, {attrs: ButtonListOptions}>} vnode
+   */
+  onbeforeupdate(vnode) {
+    const att = buttonGroupSchema.parse(vnode.attrs);
+    att.class = util.joinClass(['buttons', att.align, att.connected, att.class, att.size]);
+    vnode.state.attrs = att;
+  },
+  /**
+   * @param {m.Vnode<ButtonListOptions, {attrs: ButtonListOptions}>} vnode
+   */
+  view(vnode) {
+    const { children } = vnode;
+    const { class: extraClass } = vnode.state.attrs;
+    return m('div', { class: extraClass }, children);
   }
-  view({ children }) {
-    return m('div', { class: this.class }, children);
-  }
-}
+};

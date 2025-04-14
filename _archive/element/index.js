@@ -14,5 +14,5 @@ export * from './TableCell.class.js';
 export * from './TableRow.class.js';
 export * from './Tag.class.js';
 export * from './TagCollection.class.js';
-export * from './TagGroup.class.mjs';
+export * from './TagGroup.class.js';
 export * from './Title.class.js';

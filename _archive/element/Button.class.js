@@ -2,10 +2,11 @@ import m from 'mithril';
 import * as schema from '../schema/index.js';
 import * as type from '../types.js';
 import z from 'zod';
+import * as util from '../util/index.js';
 
 /**
  * @typedef {object} ButtonOptions
- * @prop {string[]} [class]
+ * @prop {string[]|string} [class]
  * @prop {type.Color} [color] Color of the button (default: none)
  * @prop {type.ColorStyle} [colorStyle] Color style of the button (default: normal)
  * @prop {type.Size} [size] Size of the button (default: normal)
@@ -25,26 +26,28 @@ import z from 'zod';
  * @prop {boolean} [wrapWithControl] Place the button in a 'control' wrapper so it can be added to field-groups
  */
 
-const buttonSchema = z.object({
-  active: schema.active,
-  class: schema.classSchema,
-  color: schema.button.color,
-  colorStyle: schema.button.colorStyle,
-  disabled: schema.disabled,
-  focused: schema.focused,
-  fullWidth: schema.fullWidth,
-  hovered: schema.hovered,
-  inverted: schema.button.inverted,
-  loading: schema.loading,
-  outlined: schema.button.outlined,
-  responsive: schema.responsive,
-  rounded: schema.rounded,
-  size: schema.size,
-  static: schema.isStatic,
-  type: schema.button.type,
-  onclick: z.function().optional(),
-  wrapWithControl: z.boolean().default(false)
-});
+const buttonSchema = z
+  .object({
+    active: schema.active,
+    class: schema.classSchema,
+    color: schema.button.color,
+    colorStyle: schema.button.colorStyle,
+    disabled: schema.disabled,
+    focused: schema.focused,
+    fullWidth: schema.fullWidth,
+    hovered: schema.hovered,
+    inverted: schema.button.inverted,
+    loading: schema.loading,
+    outlined: schema.button.outlined,
+    responsive: schema.responsive,
+    rounded: schema.rounded,
+    size: schema.size,
+    static: schema.isStatic,
+    type: schema.button.type,
+    onclick: z.function().optional(),
+    wrapWithControl: z.boolean().default(false)
+  })
+  .default({});
 
 const button = {
   view: ({ attrs, children }) =>
@@ -65,64 +68,59 @@ const button = {
 };
 
 /**
+ *
+ * @param {ButtonOptions} att
+ */
+function aggregateClass(att) {
+  return [
+    'button',
+    att.active,
+    att.class,
+    att.color,
+    att.colorStyle,
+    att.focused,
+    att.fullWidth,
+    att.hovered,
+    att.inverted,
+    att.loading,
+    att.outlined,
+    att.responsive,
+    att.rounded,
+    att.size,
+    att.static
+  ];
+}
+
+/**
  * The button is an essential element of any design. It's meant to look and behave as an interactive element of your page.
  *
  * Ref: https://bulma.io/documentation/elements/button/
  */
-export class Button {
+export const Button = {
   /**
-   *
-   * @param {import('mithril').Vnode<ButtonOptions>} vnode
+   * @param {m.Vnode<ButtonOptions, {attrs: ButtonOptions}>} vnode
    */
-  constructor(vnode) {
+  oninit(vnode) {
     const att = buttonSchema.parse(vnode.attrs);
-    /** @type {string} */
-    this.class = [
-      'button',
-      att.active,
-      att.class,
-      att.color,
-      att.colorStyle,
-      att.focused,
-      att.fullWidth,
-      att.hovered,
-      att.inverted,
-      att.loading,
-      att.outlined,
-      att.responsive,
-      att.rounded,
-      att.size,
-      att.static
-    ]
-      .filter((c) => !!c)
-      .join(' ');
-    /** @type {"button" | "submit" | "reset"} */
-    this.type = att.type;
-    /** @type {"disabled"|""} */
-    this.disabled = att.disabled;
-    this.text = att.text;
-    this.control = att.wrapWithControl;
+    att.class = util.joinClass(aggregateClass(att));
+    vnode.state.attrs = att;
+  },
+  /**
+   * @param {m.Vnode<ButtonOptions, {attrs: ButtonOptions}>} vnode
+   */
+  onbeforeupdate(vnode) {
+    const att = buttonSchema.parse(vnode.attrs);
+    att.class = util.joinClass(aggregateClass(att));
+    vnode.state.attrs = att;
+  },
+  /**
+   * @param {m.Vnode<ButtonOptions, {attrs: ButtonOptions}>} vnode
+   */
+  view(vnode) {
+    const { children } = vnode;
+    const { class: extraClass, wrapWithControl, disabled, type } = vnode.state.attrs;
+    return wrapWithControl
+      ? m('p.control', m(button, { class: extraClass, disabled, type }, children))
+      : m(button, { class: extraClass, disabled, type }, children);
   }
-  view({ children }) {
-    return this.control
-      ? m(
-          'p.control',
-          m(button, { class: this.class, disabled: this.disabled, type: this.type }, children)
-        )
-      : m(button, { class: this.class, disabled: this.disabled, type: this.type }, children);
-    // m(
-    //   'button',
-    //   {
-    //     class: this.class,
-    //     disabled: this.disabled() ? 'disabled' : '',
-    //     type: this.type
-    //   },
-    //   children
-    //     ? children.map((c) => {
-    //         if (typeof c == 'string') return m('span', c);
-    //         else return c;
-    //       })
-    //     : null
-    // );
-  }
-}
+};

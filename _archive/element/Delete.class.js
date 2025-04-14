@@ -23,23 +23,34 @@ const deleteSchema = z.object({
  *
  * Ref: https://bulma.io/documentation/elements/delete/
  */
-export class Delete {
+export const Content = {
   /**
-   *
-   * @param {m.Vnode<DeleteOptions>} vnode
+   * @param {m.Vnode<DeleteOptions, {attrs: DeleteOptions}>} vnode
    */
-  constructor(vnode) {
+  oninit(vnode) {
     const att = deleteSchema.parse(vnode.attrs);
-    this.class = util.joinClass(['delete', att.class, att.size]);
-    this.deleteEffect = att.deleteEffect;
-  }
-  view() {
+    att.class = util.joinClass(['delete', att.class, att.size]);
+    vnode.state.attrs = att;
+  },
+  /**
+   * @param {m.Vnode<DeleteOptions, {attrs: DeleteOptions}>} vnode
+   */
+  onbeforeupdate(vnode) {
+    const att = deleteSchema.parse(vnode.attrs);
+    att.class = util.joinClass(['delete', att.class, att.size]);
+    vnode.state.attrs = att;
+  },
+  /**
+   * @param {m.Vnode<DeleteOptions, {attrs: DeleteOptions}>} vnode
+   */
+  view(vnode) {
+    const { class: extraClass, deleteEffect } = vnode.state.attrs;
     return m('button', {
-      class: this.class,
+      class: extraClass,
       onclick: ({ target }) => {
         target.parentNode.remove();
-        if (this.deleteEffect) this.deleteEffect();
+        if (deleteEffect) deleteEffect();
       }
     });
   }
-}
+};
