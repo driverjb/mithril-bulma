@@ -2,19 +2,24 @@
   "name": "mithril-bulma",
   "version": "0.0.1",
   "type": "module",
+  "module": "index.js",
   "description": "MithrilJS components for the Bulma CSS Framework",
   "scripts": {
-    "demo": "parcel serve demo/index.html --no-cache"
+    "build": "tsc --watch"
   },
   "keywords": [],
   "author": "Joel Driver <driverjb09@gmail.com> (https://joeldriver.info/)",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@types/mithril": "^2.2.7",
     "zod": "^3.24.2"
   },
   "peerDependencies": {
     "bulma": "^1.0.3",
     "mithril": "^2.2.15"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }

@@ -1,7 +1,66 @@
 export {};
 
 /**
- * @typedef {"white"|"light"|"dark"|"black"|"text"|"ghost"|"primary"|"link"|"info"|"success"|"warning"|"danger"|"none"} Color
+ * @typedef {'fullwidth'|'narrow'} ContainerWidth
+ */
+
+/**
+ * @typedef {'hidden'|'invisible'} Visibility
+ */
+
+/**
+ * @typedef {'block'|'inline'|'inline-block'|'flex'|'inline-flex'} Display
+ */
+
+/**
+ * @typedef {'left'|'right'} Float
+ */
+
+/**
+ * @typedef {'mobile'|'desktop'|'widescreen'|'fullhd'} Responsive
+ */
+
+/**
+ * @typedef {object} Margin
+ * @prop {number} [all]
+ * @prop {number} [top]
+ * @prop {number} [bottom]
+ * @prop {number} [left]
+ * @prop {number} [right]
+ * @prop {number} [x]
+ * @prop {number} [y]
+ */
+
+/**
+ * @typedef {object} Padding
+ * @prop {number} [all]
+ * @prop {number} [top]
+ * @prop {number} [bottom]
+ * @prop {number} [left]
+ * @prop {number} [right]
+ * @prop {number} [x]
+ * @prop {number} [y]
+ */
+
+/**
+ * @typedef {object} Flex
+ * @prop {boolean} [inline]
+ * @prop {'row'|'column'|'row-reverse'|'column-reverse'} [direction]
+ * @prop {'wrap'|'nowrap'|'wrap-reverse'} [wrap]
+ * @prop {'flex-start'| 'flex-end'| 'center'| 'space-between'| 'space-around'| 'space-evenly'| 'start'| 'end'| 'left'| 'right'} [justify]
+ * @prop {'flex-start'|'flex-end'|'center'|'space-between'|'space-around'|'space-evenly'|'stretch'|'start'|'end'|'baseline'} [alignContent]
+ * @prop {'stretch'|'flex-start'|'flex-end'|'center'|'baseline'|'start'|'end'|'self-start'|'self-end'} [alignItems]
+ * @prop {'auto'|'flex-start'|'flex-end'|'center'|'baseline'|'stretch'} [alignSelf]
+ * @prop {number} [grow]
+ * @prop {number} [shrink]
+ */
+
+/**
+ * @typedef {'black-bis'| 'black-ter'| 'black'| 'danger-dark'| 'danger-light'| 'danger'| 'dark'| 'grey-dark'| 'grey-darker'| 'grey-light'| 'grey-lighter'| 'grey'| 'info-dark'| 'info-light'| 'info'| 'light'| 'link-dark'| 'link-light'| 'link'| 'primary-dark'| 'primary-light'| 'primary'| 'success-dark'| 'success-light'| 'success'| 'warning-dark'| 'warning-light'| 'warning'| 'white-bis'| 'white-ter'| 'white'} ColorText
+ */
+
+/**
+ * @typedef {'black-bis'| 'black-ter'| 'black'| 'danger-dark'| 'danger-light'| 'danger'| 'dark'| 'grey-dark'| 'grey-darker'| 'grey-light'| 'grey-lighter'| 'grey'| 'info-dark'| 'info-light'| 'info'| 'light'| 'link-dark'| 'link-light'| 'link'| 'primary-dark'| 'primary-light'| 'primary'| 'success-dark'| 'success-light'| 'success'| 'warning-dark'| 'warning-light'| 'warning'| 'white-bis'| 'white-ter'| 'white'} ColorBackground
  */
 
 /**
@@ -17,11 +76,31 @@ export {};
  */
 
 /**
- * @typedef {"left"|"center"|"right"} Alignment
+ * @typedef {'left'|'center'|'right'|'justify'} Alignment
  */
 
 /**
  * @typedef {"smallest"|"smaller"|"small"|"normal"|"large"|"larger"|"largest"} IconSize
+ */
+
+/**
+ * @typedef {object} CommonOptions
+ * @prop {Margin} [margin]
+ * @prop {Padding} [padding]
+ * @prop {Flex} [flex]
+ * @prop {Visibility} [visible]
+ * @prop {Float} [float]
+ * @prop {Display} [display]
+ * @prop {boolean} [clip]
+ * @prop {Responsive} [responsive]
+ * @prop {Alignment} [align]
+ * @prop {string[]} [classManual]
+ */
+
+/**
+ * @typedef {object} ColorOptions
+ * @prop {ColorText} [colorText]
+ * @prop {ColorBackground} [colorBackground]
  */
 
 /**

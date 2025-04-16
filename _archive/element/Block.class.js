@@ -19,6 +19,7 @@ const blockSchema = z
  *
  * Ref: https://bulma.io/documentation/elements/block/
  */
+
 export const Block = {
   oninit(vnode) {
     vnode.state.attrs = blockSchema.parse(vnode.attrs);
