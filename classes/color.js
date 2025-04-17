@@ -5,21 +5,25 @@ import z from 'zod';
  *
  * Transform: `is-${a}`
  */
-export const Color = z.enum([
-  'black',
-  'danger',
-  'dark',
-  'ghost',
-  'grey',
-  'info',
-  'light',
-  'link',
-  'primary',
-  'success',
-  'text',
-  'warning',
-  'white'
-]);
+export const Color = z.object({
+  color: z
+    .enum([
+      'black',
+      'danger',
+      'dark',
+      'ghost',
+      'grey',
+      'info',
+      'light',
+      'link',
+      'primary',
+      'success',
+      'text',
+      'warning',
+      'white'
+    ])
+    .optional()
+});
 //.transform((c) => `is-${c}`);
 
 /**
@@ -27,39 +31,43 @@ export const Color = z.enum([
  *
  * Transform: `has-text-${a}`
  */
-export const ColorText = z.enum([
-  'black-bis',
-  'black-ter',
-  'black',
-  'danger-dark',
-  'danger-light',
-  'danger',
-  'dark',
-  'grey-dark',
-  'grey-darker',
-  'grey-light',
-  'grey-lighter',
-  'grey',
-  'info-dark',
-  'info-light',
-  'info',
-  'light',
-  'link-dark',
-  'link-light',
-  'link',
-  'primary-dark',
-  'primary-light',
-  'primary',
-  'success-dark',
-  'success-light',
-  'success',
-  'warning-dark',
-  'warning-light',
-  'warning',
-  'white-bis',
-  'white-ter',
-  'white'
-]);
+export const ColorText = z.object({
+  colorText: z
+    .enum([
+      'black-bis',
+      'black-ter',
+      'black',
+      'danger-dark',
+      'danger-light',
+      'danger',
+      'dark',
+      'grey-dark',
+      'grey-darker',
+      'grey-light',
+      'grey-lighter',
+      'grey',
+      'info-dark',
+      'info-light',
+      'info',
+      'light',
+      'link-dark',
+      'link-light',
+      'link',
+      'primary-dark',
+      'primary-light',
+      'primary',
+      'success-dark',
+      'success-light',
+      'success',
+      'warning-dark',
+      'warning-light',
+      'warning',
+      'white-bis',
+      'white-ter',
+      'white'
+    ])
+    .optional()
+});
 // .transform((c) => `has-text-${c}`);
 
 /**
@@ -67,37 +75,41 @@ export const ColorText = z.enum([
  *
  * Transform: `has-background-${a}`
  */
-export const ColorBackground = z.enum([
-  'black-bis',
-  'black-ter',
-  'black',
-  'danger-dark',
-  'danger-light',
-  'danger',
-  'dark',
-  'grey-dark',
-  'grey-darker',
-  'grey-light',
-  'grey-lighter',
-  'grey',
-  'info-dark',
-  'info-light',
-  'info',
-  'light',
-  'link-dark',
-  'link-light',
-  'link',
-  'primary-dark',
-  'primary-light',
-  'primary',
-  'success-dark',
-  'success-light',
-  'success',
-  'warning-dark',
-  'warning-light',
-  'warning',
-  'white-bis',
-  'white-ter',
-  'white'
-]);
+export const ColorBackground = z.object({
+  colorBackground: z
+    .enum([
+      'black-bis',
+      'black-ter',
+      'black',
+      'danger-dark',
+      'danger-light',
+      'danger',
+      'dark',
+      'grey-dark',
+      'grey-darker',
+      'grey-light',
+      'grey-lighter',
+      'grey',
+      'info-dark',
+      'info-light',
+      'info',
+      'light',
+      'link-dark',
+      'link-light',
+      'link',
+      'primary-dark',
+      'primary-light',
+      'primary',
+      'success-dark',
+      'success-light',
+      'success',
+      'warning-dark',
+      'warning-light',
+      'warning',
+      'white-bis',
+      'white-ter',
+      'white'
+    ])
+    .optional()
+});
 // .transform((c) => `has-background-${c}`);

@@ -1,10 +1,21 @@
 import m from 'mithril';
-import * as c from '../common/index.js';
-import * as t from '../types.js';
+import * as j from '../jsdoc.js';
+import * as u from '../util/index.js';
+import * as s from '../schema/index.js';
+import z from 'zod';
 
 /**
- * @typedef {t.CommonOptions & t.ColorOptions} BlockOptions
+ * @typedef {j.CommonOptions & j.StandardColorOptions} BlockOptions
  */
+
+//const schema = s.common;
+
+const schema = z
+  .object({
+    ...s.common.shape,
+    ...s.colorStandard.shape
+  })
+  .optional();
 
 /**
  * The block element is a simple spacer tool. It allows sibling HTML elements to have a consistent margin between them.
@@ -16,18 +27,16 @@ export const Block = {
    *
    * @param {m.Vnode<BlockOptions>} vnode
    */
-  oninit(vnode) {
-    const commonClass = c.prepareCommonOptions(vnode.attrs);
-    const colorClass = c.prepareColorOptions(vnode.attrs);
-    vnode.state.attrs = {
-      classCompiled: c.prepareClasses(['block', ...commonClass, ...colorClass])
-    };
+  oninit: (vnode) => {
+    const { error, data } = schema.safeParse(vnode.attrs);
+    if (error) console.warn(test.error);
+    else vnode.state.classCompiled = u.transformClasses(data, 'block');
   },
   /**
    * @param {m.Vnode<BlockOptions>} vnode
    * @returns
    */
-  view(vnode) {
-    return m('div', { class: vnode.state.attrs.classCompiled }, vnode.children);
+  view: (vnode) => {
+    return m('div', { class: vnode.state.classCompiled }, vnode.children);
   }
 };

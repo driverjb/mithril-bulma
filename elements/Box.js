@@ -1,16 +1,20 @@
 import m from 'mithril';
-import * as c from '../common/index.js';
-import * as t from '../types.js';
-import * as cl from '../classes/index.js';
+import * as j from '../jsdoc.js';
+import * as u from '../util/index.js';
+import * as s from '../schema/index.js';
+import * as c from '../classes/index.js';
+import z from 'zod';
 
 /**
- * @typedef {object} BoxOptionsExtras
- * @prop {boolean} radius
+ * @typedef {j.CommonOptions & z.infer<typeof c.NoRadius> & z.infer<typeof c.NoShadow> & j.StandardColorOptions} BoxOptions
  */
 
-/**
- * @typedef {t.CommonOptions & t.ColorOptions & BoxOptionsExtras} BoxOptions
- */
+const schema = z.object({
+  ...s.common.shape,
+  ...s.colorStandard.shape,
+  ...c.NoRadius.shape,
+  ...c.NoShadow.shape
+});
 
 /**
  * The box element is a simple container with a white background, some padding, and a box shadow.
@@ -23,18 +27,15 @@ export const Box = {
    * @param {m.Vnode<BoxOptions>} vnode
    */
   oninit(vnode) {
-    const commonClass = c.prepareCommonOptions(vnode.attrs);
-    const colorClass = c.prepareColorOptions(vnode.attrs);
-    const radiusCheck = cl.MbHasRadius.parse(vnode.attrs.radius);
-    vnode.state.attrs = {
-      classCompiled: c.prepareClasses(['box', ...commonClass, ...colorClass, radiusCheck])
-    };
+    const { data, error } = schema.safeParse(vnode.attrs);
+    if (error) console.warn(error);
+    else vnode.state.classCompiled = u.transformClasses(data, 'box');
   },
   /**
    * @param {m.Vnode<BoxOptions>} vnode
    * @returns
    */
   view(vnode) {
-    return m('div', { class: vnode.state.attrs.classCompiled }, vnode.children);
+    return m('div', { class: vnode.state.classCompiled }, vnode.children);
   }
 };

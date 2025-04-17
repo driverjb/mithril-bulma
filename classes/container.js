@@ -5,4 +5,6 @@ import z from 'zod';
  *
  * Transform: `is-${a}`
  */
-export const ContainerWidth = z.enum(['fullwidth', 'narrow']);
+export const Width = z.object({
+  width: z.enum(['fullwidth', 'narrow']).optional()
+});

@@ -4,22 +4,30 @@ const controlNumber = z.number().min(0).max(6).optional();
 
 /** Use to finely control element margin */
 export const Margin = z.object({
-  all: controlNumber,
-  top: controlNumber,
-  bottom: controlNumber,
-  left: controlNumber,
-  right: controlNumber,
-  x: controlNumber,
-  y: controlNumber
+  margin: z
+    .object({
+      all: controlNumber,
+      top: controlNumber,
+      bottom: controlNumber,
+      left: controlNumber,
+      right: controlNumber,
+      x: controlNumber,
+      y: controlNumber
+    })
+    .optional()
 });
 
 /** Use to finely control element padding */
 export const Padding = z.object({
-  all: controlNumber,
-  top: controlNumber,
-  bottom: controlNumber,
-  left: controlNumber,
-  right: controlNumber,
-  x: controlNumber,
-  y: controlNumber
+  padding: z
+    .object({
+      all: controlNumber,
+      top: controlNumber,
+      bottom: controlNumber,
+      left: controlNumber,
+      right: controlNumber,
+      x: controlNumber,
+      y: controlNumber
+    })
+    .optional()
 });
