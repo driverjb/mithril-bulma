@@ -43,6 +43,9 @@ m.route(document.body, '/', {
 });
 ```
 
+I've been painstakingly creating detailed autocompletion that follows the Bulma documentation. If
+you need to know how something works, read the Bulma documentation.
+
 # Roadmap
 
 - Elements
@@ -50,7 +53,7 @@ m.route(document.body, '/', {
   - [x] Box
   - [ ] Button
   - [x] Content
-  - [ ] Delete
+  - [x] Delete
   - [ ] Icon
   - [ ] Image
   - [x] Notification
