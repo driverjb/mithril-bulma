@@ -5,7 +5,7 @@ import z from 'zod';
  *
  * .transform((a) => `is-${a}`)
  */
-export const Display = z.object({
+export const display = z.object({
   display: z.enum(['block', 'inline', 'inline-block', 'flex', 'inline-flex']).optional()
 });
 
@@ -14,27 +14,27 @@ export const Display = z.object({
  *
  * .transform((a) => `is-${a}`)
  */
-export const Visibility = z.object({ visibility: z.enum(['hidden', 'invisible']).optional() });
+export const visibility = z.object({ visibility: z.enum(['hidden', 'invisible']).optional() });
 
 /**
  * Use for adding a float directive to the class list
  * .transform((a) => `is-pulled-${a}`)
  */
-export const Float = z.object({ float: z.enum(['left', 'right']).optional() });
+export const float = z.object({ float: z.enum(['left', 'right']).optional() });
 
 /**
  * Use for adding overflow: hidden to the class list
  *
  * .transform((a) => (a ? 'is-clipped' : ''))
  */
-export const Overflow = z.object({ overflow: z.boolean().default(false).optional() });
+export const overflow = z.object({ overflow: z.boolean().default(false).optional() });
 
 /**
  * Use for controlling responsiveness of the element
  *
  * .transform((a) => `is-${a}`)
  */
-export const Responsive = z.object({
+export const responsive = z.object({
   responsive: z.enum(['mobile', 'desktop', 'widescreen', 'fullhd']).optional()
 });
 
@@ -43,4 +43,4 @@ export const Responsive = z.object({
  *
  * .transform((a) => `has-text-${a}`)
  */
-export const Align = z.object({ align: z.enum(['left', 'center', 'right', 'justify']).optional() });
+export const align = z.object({ align: z.enum(['left', 'center', 'right', 'justify']).optional() });

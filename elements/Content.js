@@ -1,16 +1,21 @@
 import m from 'mithril';
+import * as j from '../jsdoc.js';
+import * as u from '../util/index.js';
+import * as s from '../schema/index.js';
+import * as c from '../classes/index.js';
 import z from 'zod';
-import * as t from '../types.js';
-import * as c from '../common/index.js';
 
 /**
- * @typedef {object} ContentOptionsExtras
- * @prop {"small"|"normal"|"medium"|"large"} size
+ * @typedef {j.CommonOptions & j.StandardColorOptions & z.infer<typeof c.size>} ContentOptions
  */
 
-/**
- * @typedef {t.CommonOptions & t.ColorOptions & ContentOptionsExtras} ContentOptions
- */
+const schema = z
+  .object({
+    ...s.common.shape,
+    ...s.colorStandard.shape,
+    ...c.size.shape
+  })
+  .optional();
 
 /**
  * A single class to handle WYSIWYG generated content, where only HTML tags are available.
@@ -22,21 +27,15 @@ export const Content = {
    * @param {m.Vnode<ContentOptions>} vnode
    */
   oninit(vnode) {
-    const commonClass = c.prepareCommonOptions(vnode.attrs);
-    const colorClass = c.prepareColorOptions(vnode.attrs);
-    const sizeClass = z
-      .enum(['small', 'medium', 'normal', 'large'])
-      .transform((a) => `is-${a}`)
-      .optional();
-    vnode.state.attrs = {
-      classCompiled: c.prepareClasses(['content', ...commonClass, ...colorClass, sizeClass])
-    };
+    const { data, error } = schema.safeParse(vnode.attrs);
+    if (error) console.warn(error);
+    else vnode.state.classCompiled = u.transformClasses(data, 'content');
   },
   /**
    * @param {m.Vnode<ContentOptions>} vnode
    */
   view(vnode) {
     const { children } = vnode;
-    return m('div', { class: vnode.state.attrs.classCompiled }, children);
+    return m('div', { class: vnode.state.classCompiled }, children);
   }
 };

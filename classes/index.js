@@ -4,3 +4,4 @@ export * from './flex.js';
 export * from './layout.js';
 export * from './other.js';
 export * from './spacing.js';
+export * from './size.js';

@@ -3,7 +3,7 @@ import z from 'zod';
 const controlNumber = z.number().min(0).max(6).optional();
 
 /** Use to finely control element margin */
-export const Margin = z.object({
+export const margin = z.object({
   margin: z
     .object({
       all: controlNumber,
@@ -18,7 +18,7 @@ export const Margin = z.object({
 });
 
 /** Use to finely control element padding */
-export const Padding = z.object({
+export const padding = z.object({
   padding: z
     .object({
       all: controlNumber,

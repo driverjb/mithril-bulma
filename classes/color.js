@@ -5,7 +5,7 @@ import z from 'zod';
  *
  * Transform: `is-${a}`
  */
-export const Color = z.object({
+export const color = z.object({
   color: z
     .enum([
       'black',
@@ -31,7 +31,7 @@ export const Color = z.object({
  *
  * Transform: `has-text-${a}`
  */
-export const ColorText = z.object({
+export const colorText = z.object({
   colorText: z
     .enum([
       'black-bis',
@@ -75,7 +75,7 @@ export const ColorText = z.object({
  *
  * Transform: `has-background-${a}`
  */
-export const ColorBackground = z.object({
+export const colorBackground = z.object({
   colorBackground: z
     .enum([
       'black-bis',

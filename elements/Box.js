@@ -6,15 +6,17 @@ import * as c from '../classes/index.js';
 import z from 'zod';
 
 /**
- * @typedef {j.CommonOptions & z.infer<typeof c.NoRadius> & z.infer<typeof c.NoShadow> & j.StandardColorOptions} BoxOptions
+ * @typedef {j.CommonOptions & z.infer<typeof c.noRadius> & z.infer<typeof c.noShadow> & j.StandardColorOptions} BoxOptions
  */
 
-const schema = z.object({
-  ...s.common.shape,
-  ...s.colorStandard.shape,
-  ...c.NoRadius.shape,
-  ...c.NoShadow.shape
-});
+const schema = z
+  .object({
+    ...s.common.shape,
+    ...s.colorStandard.shape,
+    ...c.noRadius.shape,
+    ...c.noShadow.shape
+  })
+  .optional();
 
 /**
  * The box element is a simple container with a white background, some padding, and a box shadow.

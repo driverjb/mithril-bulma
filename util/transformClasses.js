@@ -3,7 +3,7 @@ import * as c from '../classes/index.js';
 
 /**
  *
- * @param {z.infer<typeof c.Margin>} a
+ * @param {z.infer<typeof c.margin>} a
  */
 const marginMap = (a) => {
   const result = [];
@@ -22,26 +22,26 @@ const marginMap = (a) => {
 
 /**
  *
- * @param {z.infer<typeof c.Padding>} a
+ * @param {z.infer<typeof c.padding>} a
  */
 const paddingMap = (a) => {
   const result = [];
   const padding = a.padding;
   if (!padding) return null;
-  if (padding.all) result.push(`p-${margin.all}`);
-  if (padding.bottom) result.push(`pb-${margin.bottom}`);
-  if (padding.left) result.push(`pl-${margin.left}`);
-  if (padding.right) result.push(`pr-${margin.right}`);
-  if (padding.top) result.push(`pt-${margin.top}`);
-  if (padding.x) result.push(`px-${margin.x}`);
-  if (padding.y) result.push(`py-${margin.x}`);
+  if (padding.all) result.push(`p-${padding.all}`);
+  if (padding.bottom) result.push(`pb-${padding.bottom}`);
+  if (padding.left) result.push(`pl-${padding.left}`);
+  if (padding.right) result.push(`pr-${padding.right}`);
+  if (padding.top) result.push(`pt-${padding.top}`);
+  if (padding.x) result.push(`px-${padding.x}`);
+  if (padding.y) result.push(`py-${padding.x}`);
   if (result.length === 0) return null;
   return result.join(' ');
 };
 
 /**
  *
- * @param {z.infer<typeof c.Color>} a
+ * @param {z.infer<typeof c.color>} a
  */
 const colorMap = (a) => {
   const color = a.color;
@@ -51,7 +51,7 @@ const colorMap = (a) => {
 
 /**
  *
- * @param {z.infer<typeof c.ColorText>} a
+ * @param {z.infer<typeof c.colorText>} a
  */
 const colorTextMap = (a) => {
   const colorText = a.colorText;
@@ -61,7 +61,7 @@ const colorTextMap = (a) => {
 
 /**
  *
- * @param {z.infer<typeof c.ColorBackground>} a
+ * @param {z.infer<typeof c.colorBackground>} a
  */
 const colorBackgroundMap = (a) => {
   const colorBackground = a.colorBackground;
@@ -71,7 +71,7 @@ const colorBackgroundMap = (a) => {
 
 /**
  *
- * @param {z.infer<typeof c.Width>} a
+ * @param {z.infer<typeof c.width>} a
  */
 const widthMap = (a) => {
   const width = a.width;
@@ -81,7 +81,7 @@ const widthMap = (a) => {
 
 /**
  *
- * @param {z.infer<typeof c.Flex>} a
+ * @param {z.infer<typeof c.flex>} a
  */
 const flexMap = (a) => {
   const flex = a.flex;
@@ -171,6 +171,18 @@ const classDirectiveMap = (a) => {
   else return cl.trim();
 };
 
+const sizeMap = (a) => {
+  const size = a.size;
+  if (!size) return null;
+  return `is-${size}`;
+};
+
+const sizeGroupMap = (a) => {
+  const size = a.size;
+  if (!size) return null;
+  return `are-${size}`;
+};
+
 /**
  * Take a large collection of already validated attributes, then correctly map them to
  * bulma classes
@@ -181,25 +193,27 @@ const classDirectiveMap = (a) => {
 export function transformClasses(o, ...manual) {
   return [
     ...manual,
-    marginMap(o),
-    paddingMap(o),
+    alignMap(o),
+    classDirectiveMap(o),
+    clickableMap(o),
+    colorBackgroundMap(o),
     colorMap(o),
     colorTextMap(o),
-    colorBackgroundMap(o),
-    widthMap(o),
-    flexMap(o),
     displayMap(o),
-    visibilityMap(o),
+    flexMap(o),
     floatMap(o),
-    overflowMap(o),
-    responsiveMap(o),
-    alignMap(o),
-    clickableMap(o),
-    noShadowMap(o),
+    marginMap(o),
     noRadiusMap(o),
-    unselectableMap(o),
+    noShadowMap(o),
+    overflowMap(o),
+    paddingMap(o),
     relativeMap(o),
-    classDirectiveMap(o)
+    responsiveMap(o),
+    sizeGroupMap(o),
+    sizeMap(o),
+    unselectableMap(o),
+    visibilityMap(o),
+    widthMap(o)
   ]
     .filter(Boolean)
     .sort()

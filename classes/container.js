@@ -5,6 +5,6 @@ import z from 'zod';
  *
  * Transform: `is-${a}`
  */
-export const Width = z.object({
+export const width = z.object({
   width: z.enum(['fullwidth', 'narrow']).optional()
 });

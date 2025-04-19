@@ -1,6 +1,6 @@
 import z from 'zod';
 
-export const Flex = z.object({
+export const flex = z.object({
   flex: z
     .object({
       /** .transform((a) => (a ? 'is-flex' : 'is-inline-flex')) */

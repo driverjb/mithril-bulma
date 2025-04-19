@@ -1,30 +1,29 @@
 import m from 'mithril';
+import * as j from '../jsdoc.js';
+import * as u from '../util/index.js';
+import * as s from '../schema/index.js';
+import * as c from '../classes/index.js';
 import z from 'zod';
-import * as cl from '../classes.js';
-import * as c from '../common.js';
-import * as t from '../types.js';
 
 /**
  * @typedef {object} ProgressOptionsExtras
- * @prop {"small"|"normal"|"medium"|"large"} [size]
- * @prop {t.ColorText} [color]
  * @prop {number} [value]
  * @prop {number} [max]
  */
 
 /**
- * @typedef {t.CommonOptions & t.ColorOptions & ProgressOptionsExtras} ProgressOptions
+ * @typedef {j.CommonOptions & z.infer<typeof c.color> & z.infer<typeof c.size> & ProgressOptionsExtras} ProgressOptions
  */
 
-const progressSchema = z.object({
-  size: z
-    .enum(['small', 'medium', 'normal', 'large'])
-    .transform((a) => `is-${a}`)
-    .optional(),
-  color: cl.MbColor,
-  value: z.number().min(0).optional(),
-  max: z.number().min(1).optional()
-});
+const schema = z
+  .object({
+    ...s.common.shape,
+    ...c.size.shape,
+    ...c.color.shape,
+    value: z.number().min(0).optional(),
+    max: z.number().min(1).optional()
+  })
+  .optional();
 
 /**
  * Native HTML progress bars
@@ -37,17 +36,17 @@ export const Progress = {
    * @param {m.Vnode<ProgressOptions>} vnode
    */
   oninit(vnode) {
-    const commonClass = c.prepareCommonOptions(vnode.attrs);
-    const { size, max, value, color } = progressSchema.parse(vnode.attrs);
-    vnode.state.attrs = {
-      classCompiled: c.prepareClasses(['progress', ...commonClass, color, size])
-    };
-    vnode.state.value = value;
-    vnode.state.max = max;
+    const { data, error } = schema.safeParse(vnode.attrs);
+    if (error) console.warn(error);
+    else {
+      vnode.state.classCompiled = u.transformClasses(data, 'progress');
+      vnode.state.value = data.value;
+      vnode.state.max = data.max;
+    }
   },
   view(vnode) {
     return m('progress', {
-      class: vnode.state.attrs.classCompiled,
+      class: vnode.state.classCompiled,
       max: vnode.state.max,
       value: vnode.state.value
     });
