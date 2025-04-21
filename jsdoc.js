@@ -1,14 +1,4 @@
-import z from 'zod';
-import * as c from './classes/index.js';
 export {};
-
-/**
- * @typedef {z.infer<typeof c.classDirectives> & z.infer<typeof c.align> & z.infer<typeof c.clickable> & z.infer<typeof c.width> & z.infer<typeof c.display> & z.infer<typeof c.float> & z.infer<typeof c.margin> & z.infer<typeof c.noRadius> &  z.infer<typeof c.noShadow> & z.infer<typeof c.padding> & z.infer<typeof c.relative>} CommonOptions
- */
-
-/**
- * @typedef {z.infer<typeof c.colorText> & z.infer<typeof c.colorBackground>} StandardColorOptions
- */
 
 /**
  * @typedef {object} FontAwesomeRegularIcon
