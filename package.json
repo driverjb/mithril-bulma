@@ -1,6 +1,6 @@
 {
   "name": "mithril-bulma",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A collection of flexible Mithril components based on Bulma CSS.",
   "main": "index.mjs",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/driverjb/mithril-bulma.git"
+    "url": "git+ssh://git@github.com:driverjb/mithril-bulma.git"
   },
   "keywords": [],
   "author": "Joel Driver <driverjb09@gmail.com> (https://joeldriver.info/)",
@@ -16,9 +16,9 @@
   "type": "module",
   "private": false,
   "bugs": {
-    "url": "https://gitlab.com/driverjb/mithril-bulma/issues"
+    "url": "https://github.com/driverjb/mithril-bulma/issues"
   },
-  "homepage": "https://gitlab.com/driverjb/mithril-bulma#readme",
+  "homepage": "https://github.com/driverjb/mithril-bulma",
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
     "bulma": "^1.0.4",
