@@ -1,0 +1,40 @@
+import m from 'mithril';
+import { extractClasses, is, toClass } from '../util.mjs';
+
+/**
+ * @typedef {'three-quarters-mobile'|'three-quarters-touch'|'three-quarters-tablet'|'three-quarters-tablet-only'|'three-quarters-desktop'|'three-quarters-desktop-only'|'three-quarters-widescreen'|'three-quarters-widescreen-only'|'three-quarters-fullhd'|'two-thirds-mobile'|'two-thirds-touch'|'two-thirds-tablet'|'two-thirds-tablet-only'|'two-thirds-desktop'|'two-thirds-desktop-only'|'two-thirds-widescreen'|'two-thirds-widescreen-only'|'two-thirds-fullhd'|'half-mobile'|'half-touch'|'half-tablet'|'half-tablet-only'|'half-desktop'|'half-desktop-only'|'half-widescreen'|'half-widescreen-only'|'half-fullhd'|'one-third-mobile'|'one-third-touch'|'one-third-tablet'|'one-third-tablet-only'|'one-third-desktop'|'one-third-desktop-only'|'one-third-widescreen'|'one-third-widescreen-only'|'one-third-fullhd'|'one-quarter-mobile'|'one-quarter-touch'|'one-quarter-tablet'|'one-quarter-tablet-only'|'one-quarter-desktop'|'one-quarter-desktop-only'|'one-quarter-widescreen'|'one-quarter-widescreen-only'|'one-quarter-fullhd'|'full-mobile'|'full-touch'|'full-tablet'|'full-tablet-only'|'full-desktop'|'full-desktop-only'|'full-widescreen'|'full-widescreen-only'|'full-fullhd'|'four-fifths-mobile'|'four-fifths-touch'|'four-fifths-tablet'|'four-fifths-tablet-only'|'four-fifths-desktop'|'four-fifths-desktop-only'|'four-fifths-widescreen'|'four-fifths-widescreen-only'|'four-fifths-fullhd'|'three-fifths-mobile'|'three-fifths-touch'|'three-fifths-tablet'|'three-fifths-tablet-only'|'three-fifths-desktop'|'three-fifths-desktop-only'|'three-fifths-widescreen'|'three-fifths-widescreen-only'|'three-fifths-fullhd'|'two-fifths-mobile'|'two-fifths-touch'|'two-fifths-tablet'|'two-fifths-tablet-only'|'two-fifths-desktop'|'two-fifths-desktop-only'|'two-fifths-widescreen'|'two-fifths-widescreen-only'|'two-fifths-fullhd'|'one-fifth-mobile'|'one-fifth-touch'|'one-fifth-tablet'|'one-fifth-tablet-only'|'one-fifth-desktop'|'one-fifth-desktop-only'|'one-fifth-widescreen'|'one-fifth-widescreen-only'|'one-fifth-fullhd'} ColumnSize
+ * @typedef {'three-quarters-mobile'|'three-quarters-touch'|'three-quarters-tablet'|'three-quarters-tablet-only'|'three-quarters-desktop'|'three-quarters-desktop-only'|'three-quarters-widescreen'|'three-quarters-widescreen-only'|'three-quarters-fullhd'|'two-thirds-mobile'|'two-thirds-touch'|'two-thirds-tablet'|'two-thirds-tablet-only'|'two-thirds-desktop'|'two-thirds-desktop-only'|'two-thirds-widescreen'|'two-thirds-widescreen-only'|'two-thirds-fullhd'|'half-mobile'|'half-touch'|'half-tablet'|'half-tablet-only'|'half-desktop'|'half-desktop-only'|'half-widescreen'|'half-widescreen-only'|'half-fullhd'|'one-third-mobile'|'one-third-touch'|'one-third-tablet'|'one-third-tablet-only'|'one-third-desktop'|'one-third-desktop-only'|'one-third-widescreen'|'one-third-widescreen-only'|'one-third-fullhd'|'one-quarter-mobile'|'one-quarter-touch'|'one-quarter-tablet'|'one-quarter-tablet-only'|'one-quarter-desktop'|'one-quarter-desktop-only'|'one-quarter-widescreen'|'one-quarter-widescreen-only'|'one-quarter-fullhd'|'four-fifths-mobile'|'four-fifths-touch'|'four-fifths-tablet'|'four-fifths-tablet-only'|'four-fifths-desktop'|'four-fifths-desktop-only'|'four-fifths-widescreen'|'four-fifths-widescreen-only'|'four-fifths-fullhd'|'three-fifths-mobile'|'three-fifths-touch'|'three-fifths-tablet'|'three-fifths-tablet-only'|'three-fifths-desktop'|'three-fifths-desktop-only'|'three-fifths-widescreen'|'three-fifths-widescreen-only'|'three-fifths-fullhd'|'two-fifths-mobile'|'two-fifths-touch'|'two-fifths-tablet'|'two-fifths-tablet-only'|'two-fifths-desktop'|'two-fifths-desktop-only'|'two-fifths-widescreen'|'two-fifths-widescreen-only'|'two-fifths-fullhd'|'one-fifth-mobile'|'one-fifth-touch'|'one-fifth-tablet'|'one-fifth-tablet-only'|'one-fifth-desktop'|'one-fifth-desktop-only'|'one-fifth-widescreen'|'one-fifth-widescreen-only'|'one-fifth-fullhd'|'1-mobile'|'1-touch'|'1-tablet'|'1-tablet-only'|'1-desktop'|'1-desktop-only'|'1-widescreen'|'1-widescreen-only'|'1-fullhd'|'2-mobile'|'2-touch'|'2-tablet'|'2-tablet-only'|'2-desktop'|'2-desktop-only'|'2-widescreen'|'2-widescreen-only'|'2-fullhd'|'3-mobile'|'3-touch'|'3-tablet'|'3-tablet-only'|'3-desktop'|'3-desktop-only'|'3-widescreen'|'3-widescreen-only'|'3-fullhd'|'4-mobile'|'4-touch'|'4-tablet'|'4-tablet-only'|'4-desktop'|'4-desktop-only'|'4-widescreen'|'4-widescreen-only'|'4-fullhd'|'5-mobile'|'5-touch'|'5-tablet'|'5-tablet-only'|'5-desktop'|'5-desktop-only'|'5-widescreen'|'5-widescreen-only'|'5-fullhd'|'6-mobile'|'6-touch'|'6-tablet'|'6-tablet-only'|'6-desktop'|'6-desktop-only'|'6-widescreen'|'6-widescreen-only'|'6-fullhd'|'7-mobile'|'7-touch'|'7-tablet'|'7-tablet-only'|'7-desktop'|'7-desktop-only'|'7-widescreen'|'7-widescreen-only'|'7-fullhd'|'8-mobile'|'8-touch'|'8-tablet'|'8-tablet-only'|'8-desktop'|'8-desktop-only'|'8-widescreen'|'8-widescreen-only'|'8-fullhd'|'9-mobile'|'9-touch'|'9-tablet'|'9-tablet-only'|'9-desktop'|'9-desktop-only'|'9-widescreen'|'9-widescreen-only'|'9-fullhd'|'10-mobile'|'10-touch'|'10-tablet'|'10-tablet-only'|'10-desktop'|'10-desktop-only'|'10-widescreen'|'10-widescreen-only'|'10-fullhd'|'11-mobile'|'11-touch'|'11-tablet'|'11-tablet-only'|'11-desktop'|'11-desktop-only'|'11-widescreen'|'11-widescreen-only'|'11-fullhd'} ColumnOffset
+ * @typedef {'1'|'1-mobile'|'1-touch'|'1-tablet'|'1-tablet-only'|'1-desktop'|'1-desktop-only'|'1-widescreen'|'1-widescreen-only'|'1-fullhd'|'2'|'2-mobile'|'2-touch'|'2-tablet'|'2-tablet-only'|'2-desktop'|'2-desktop-only'|'2-widescreen'|'2-widescreen-only'|'2-fullhd'|'3'|'3-mobile'|'3-touch'|'3-tablet'|'3-tablet-only'|'3-desktop'|'3-desktop-only'|'3-widescreen'|'3-widescreen-only'|'3-fullhd'|'4'|'4-mobile'|'4-touch'|'4-tablet'|'4-tablet-only'|'4-desktop'|'4-desktop-only'|'4-widescreen'|'4-widescreen-only'|'4-fullhd'|'5'|'5-mobile'|'5-touch'|'5-tablet'|'5-tablet-only'|'5-desktop'|'5-desktop-only'|'5-widescreen'|'5-widescreen-only'|'5-fullhd'|'6'|'6-mobile'|'6-touch'|'6-tablet'|'6-tablet-only'|'6-desktop'|'6-desktop-only'|'6-widescreen'|'6-widescreen-only'|'6-fullhd'|'7'|'7-mobile'|'7-touch'|'7-tablet'|'7-tablet-only'|'7-desktop'|'7-desktop-only'|'7-widescreen'|'7-widescreen-only'|'7-fullhd'|'8'|'8-mobile'|'8-touch'|'8-tablet'|'8-tablet-only'|'8-desktop'|'8-desktop-only'|'8-widescreen'|'8-widescreen-only'|'8-fullhd'|'9'|'9-mobile'|'9-touch'|'9-tablet'|'9-tablet-only'|'9-desktop'|'9-desktop-only'|'9-widescreen'|'9-widescreen-only'|'9-fullhd'|'10'|'10-mobile'|'10-touch'|'10-tablet'|'10-tablet-only'|'10-desktop'|'10-desktop-only'|'10-widescreen'|'10-widescreen-only'|'10-fullhd'|'11'|'11-mobile'|'11-touch'|'11-tablet'|'11-tablet-only'|'11-desktop'|'11-desktop-only'|'11-widescreen'|'11-widescreen-only'|'11-fullhd'|'12'|'12-mobile'|'12-touch'|'12-tablet'|'12-tablet-only'|'12-desktop'|'12-desktop-only'|'12-widescreen'|'12-widescreen-only'|'12-fullhd'} ColumnGrid
+ */
+
+/**
+ * @typedef {object} ColumnAttributes
+ * @prop {ColumnSize} [size]
+ * @prop {ColumnOffset} [offset]
+ * @prop {ColumnGrid} [grid]
+ * @prop {boolean} [narrow]
+ * @prop {Array<import('../attributes.mjs').Breakpoint>|import('../attributes.mjs').Breakpoint} [narrowBreakpoint]
+ */
+
+/**
+ * Column entries to be placed into a Column.Group component
+ *
+ * https://bulma.io/documentation/columns/basics/
+ *
+ * @type {m.Component<import('../attributes.mjs').MbStandardAttributes & ColumnAttributes>}
+ */
+export const Entry = {
+  view: ({ attrs, children }) => {
+    const extract = extractClasses(attrs);
+    const { grid, offset, size, narrow, narrowBreakpoint, ...rest } = attrs;
+    const classes = toClass(
+      is({ size, grid, narrow }),
+      offset ? `is-offset-${offset}` : null,
+      Array.isArray(narrowBreakpoint)
+        ? narrowBreakpoint.map((n) => `is-narrow-${n}`)
+        : `is-narrow-${narrowBreakpoint}`,
+      extract
+    );
+    return m('.column', { class: classes, ...rest }, children);
+  }
+};
