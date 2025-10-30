@@ -8,3 +8,4 @@ export * from './image.mjs';
 export * from './progress-bar.mjs';
 export * as Tag from './tag.mjs';
 export * from './title.mjs';
+export * as Table from './table.mjs';
