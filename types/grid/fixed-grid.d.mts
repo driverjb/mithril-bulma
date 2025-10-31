@@ -22,3 +22,4 @@ export type FixedGridAttributes = {
      */
     autoBreakpoint?: boolean;
 };
+import m from 'mithril';

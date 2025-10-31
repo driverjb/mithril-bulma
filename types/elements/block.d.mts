@@ -9,3 +9,4 @@
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
 export const Block: m.Component<import("../attributes.mjs").MbStandardAttributes>;
+import m from 'mithril';

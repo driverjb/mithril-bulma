@@ -30,3 +30,4 @@ export type HeroAttributes = {
     color?: import("../attributes.mjs").Color;
     size?: "small" | "medium" | "large" | "half-height" | "fullheight" | "fullheight-with-navbar";
 };
+import m from 'mithril';

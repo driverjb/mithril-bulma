@@ -20,3 +20,4 @@ export type NotificationDefinition = {
 export type TickCounter = {
     tick: number;
 };
+import m from 'mithril';

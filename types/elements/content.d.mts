@@ -26,3 +26,4 @@ export const Content: m.Component<import("../attributes.mjs").MbStandardAttribut
 export type ContentAttributes = {
     size?: import("../attributes.mjs").Size;
 };
+import m from 'mithril';

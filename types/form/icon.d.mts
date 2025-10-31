@@ -19,3 +19,4 @@ export type FormIcon = {
     faStyle?: "solid" | "regular" | "brand";
     faIcon?: string;
 };
+import m from 'mithril';

@@ -36,3 +36,4 @@ export type IconSettings = {
     border?: boolean;
     animated?: "spinner" | "pulse";
 };
+import m from 'mithril';

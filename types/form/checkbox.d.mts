@@ -39,3 +39,4 @@ export type CheckboxAttributes = {
     checked?: boolean;
     disabled?: boolean;
 };
+import m from 'mithril';

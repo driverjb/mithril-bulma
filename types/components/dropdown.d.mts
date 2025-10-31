@@ -45,3 +45,4 @@ export type DropdownAttributes = {
     dropup?: boolean;
     right?: boolean;
 };
+import m from 'mithril';

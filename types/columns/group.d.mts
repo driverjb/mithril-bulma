@@ -33,3 +33,4 @@ export type ColumnGroupAttributes = {
     breakpoint?: Array<import("../attributes.mjs").Breakpoint> | import("../attributes.mjs").Breakpoint;
     centered?: boolean;
 };
+import m from 'mithril';

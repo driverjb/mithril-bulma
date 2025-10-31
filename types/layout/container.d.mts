@@ -13,3 +13,4 @@ export const Container: m.Component<import("../attributes.mjs").MbStandardAttrib
 export type ContainerAttributes = {
     breakpoint?: "widescreen" | "fullhd" | "max-desktop" | "max-widescreen" | "max-tablet" | "fluid";
 };
+import m from 'mithril';

@@ -54,3 +54,4 @@ export type InputAttributes = {
     isStatic?: boolean;
     focused?: boolean;
 };
+import m from 'mithril';

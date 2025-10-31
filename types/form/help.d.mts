@@ -46,3 +46,4 @@ export type HelpAttributes = {
      */
     valid?: boolean | null;
 };
+import m from 'mithril';

@@ -3,11 +3,13 @@
     "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "checkJs": true,
+    "checkJs": false,
     "noEmit": false,
     "outDir": "types",
     "lib": ["ESNext", "DOM"],
-    "removeComments": false
+    "removeComments": false,
+    "moduleResolution": "bundler",
+    "module": "esnext"
   },
   "include": [
     "columns/**/*.mjs",

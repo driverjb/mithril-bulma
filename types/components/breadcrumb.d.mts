@@ -38,3 +38,4 @@ export type BreadcrumbAttributes = {
     size?: "small" | "medium" | "large";
     class?: string;
 };
+import m from 'mithril';

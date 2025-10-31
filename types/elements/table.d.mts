@@ -46,3 +46,4 @@ export const HeaderCell: m.Component<import("../attributes.mjs").MbStandardAttri
 export type TableColor = {
     color?: import("../attributes.mjs").Color;
 };
+import m from 'mithril';

@@ -30,3 +30,4 @@ export type TabsAttributes = {
     theme?: "boxed" | "toggle" | "toggle-rounded";
     fullwidth?: boolean;
 };
+import m from 'mithril';

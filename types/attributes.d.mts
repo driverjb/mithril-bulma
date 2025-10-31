@@ -107,3 +107,4 @@ export type Size = "small" | "normal" | "medium" | "large";
 export type Alignment = "left" | "centered" | "right";
 export type MbStandardAttributes = MBExtraHelperAttributes & m.Attributes;
 export type Breakpoint = "mobile" | "touch" | "tablet" | "tablet-only" | "desktop" | "desktop-only" | "widescreen" | "widescreen-only" | "fullhd";
+import m from 'mithril';

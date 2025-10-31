@@ -31,3 +31,4 @@ export type MessageAttributes = {
     color?: import("../attributes.mjs").Color;
     size?: import("../attributes.mjs").Size;
 };
+import m from 'mithril';

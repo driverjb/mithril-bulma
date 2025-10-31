@@ -26,3 +26,4 @@ export const Right: m.Component<import("../attributes.mjs").MbStandardAttributes
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
 export const Content: m.Component<import("../attributes.mjs").MbStandardAttributes>;
+import m from 'mithril';

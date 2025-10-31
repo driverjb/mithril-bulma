@@ -35,8 +35,9 @@ export namespace Manager {
     function add(component: any, attributes: any): void;
     /** Clears the modal on the top of the stack */
     function clear(): void;
-    function view(): any;
+    function view(): m.Vnode<any, any>;
 }
 export type ModalAttributes = {
     cardMode?: boolean;
 };
+import m from 'mithril';

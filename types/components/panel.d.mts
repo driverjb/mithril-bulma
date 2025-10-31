@@ -29,3 +29,4 @@ export const Tab: m.Component<import("../attributes.mjs").MbStandardAttributes>;
 export type PanelAttributes = {
     color?: import("../attributes.mjs").Color;
 };
+import m from 'mithril';

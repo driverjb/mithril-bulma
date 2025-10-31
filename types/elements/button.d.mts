@@ -23,3 +23,4 @@ export type ButtonAttributes = {
     disabled?: boolean;
     onclick?: (e: Event) => void;
 };
+import m from 'mithril';

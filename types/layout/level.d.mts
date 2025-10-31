@@ -34,3 +34,4 @@ export type LevelAttributes = {
 export type LevelItemAttributes = {
     centered?: boolean;
 };
+import m from 'mithril';

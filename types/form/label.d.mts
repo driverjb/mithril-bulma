@@ -15,3 +15,4 @@ export type LabelAttributes = {
     size?: import("../attributes.mjs").Size;
     color?: import("../attributes.mjs").Color;
 };
+import m from 'mithril';

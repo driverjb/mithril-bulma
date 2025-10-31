@@ -28,3 +28,4 @@ export type FieldAttributes = {
     horizontal?: boolean;
     size?: import("../attributes.mjs").Size;
 };
+import m from 'mithril';

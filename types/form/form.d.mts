@@ -6,3 +6,4 @@
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
 export const Form: m.Component<import("../attributes.mjs").MbStandardAttributes>;
+import m from 'mithril';

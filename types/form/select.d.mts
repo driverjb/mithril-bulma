@@ -40,3 +40,4 @@ export type SelectAttributes = {
     focused?: boolean;
     onselect?: (e: Event) => void;
 };
+import m from 'mithril';

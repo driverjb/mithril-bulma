@@ -32,3 +32,4 @@ export const List: m.Component<import("../attributes.mjs").MbStandardAttributes>
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
 export const Item: m.Component<import("../attributes.mjs").MbStandardAttributes>;
+import m from 'mithril';

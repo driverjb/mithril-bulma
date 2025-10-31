@@ -52,3 +52,4 @@ export type RadioAttributes = {
     onselect?: (value: string) => void;
     selected?: string | number;
 };
+import m from 'mithril';

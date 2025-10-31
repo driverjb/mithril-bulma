@@ -41,3 +41,4 @@ export type FileAttributes = {
     color?: import("../attributes.mjs").Color;
     onchange?: (e: Event) => void;
 };
+import m from 'mithril';

@@ -19,3 +19,4 @@ export type GridAttributes = {
     rowGap?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
     colGap?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
 };
+import m from 'mithril';

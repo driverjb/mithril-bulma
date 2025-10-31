@@ -17,3 +17,4 @@ export type DeleteAttributes = {
     size?: import("../attributes.mjs").Size;
     onclick?: (e: Event) => void;
 };
+import m from 'mithril';

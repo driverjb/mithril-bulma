@@ -5,3 +5,4 @@
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
 export const Footer: m.Component<import("../attributes.mjs").MbStandardAttributes>;
+import m from 'mithril';

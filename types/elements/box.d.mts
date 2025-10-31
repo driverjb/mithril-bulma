@@ -8,3 +8,4 @@
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
 export const Box: m.Component<import("../attributes.mjs").MbStandardAttributes>;
+import m from 'mithril';

@@ -53,3 +53,4 @@ export type BasicTagAttributes = {
 export type TagGroupAttributes = {
     multiline?: boolean;
 };
+import m from 'mithril';

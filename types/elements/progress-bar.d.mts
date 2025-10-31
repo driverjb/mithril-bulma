@@ -23,3 +23,4 @@ export type ProgressAttributes = {
     value?: number;
     fullWidth?: boolean;
 };
+import m from 'mithril';

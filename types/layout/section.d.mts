@@ -12,3 +12,4 @@ export const Section: m.Component<import("../attributes.mjs").MbStandardAttribut
 export type SectionAttributes = {
     spacing?: "medium" | "large";
 };
+import m from 'mithril';

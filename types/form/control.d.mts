@@ -20,3 +20,4 @@ export type ControlAttributes = {
     iconLeft?: boolean;
     iconRight?: boolean;
 };
+import m from 'mithril';

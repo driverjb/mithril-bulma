@@ -40,3 +40,4 @@ export type TitleGroupAttributes = {
     title: string;
     subtitle: string;
 };
+import m from 'mithril';

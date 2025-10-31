@@ -37,3 +37,4 @@ export type PaginationAttributes = {
     size?: import("../attributes.mjs").Size;
     centered?: boolean;
 };
+import m from 'mithril';

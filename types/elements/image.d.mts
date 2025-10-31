@@ -25,3 +25,4 @@ export type ImageAttributes = {
     size?: 16 | 24 | 32 | 48 | 64 | 96 | 128;
     ratio?: "square" | "1x1" | "5x4" | "4x3" | "3x2" | "5x3" | "16x9" | "2x1" | "3x1" | "4x5" | "3x4" | "2x3" | "3x5" | "9x16" | "1x2" | "1x3";
 };
+import m from 'mithril';

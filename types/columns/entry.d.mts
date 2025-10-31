@@ -29,3 +29,4 @@ export type ColumnAttributes = {
     narrow?: boolean;
     narrowBreakpoint?: Array<import("../attributes.mjs").Breakpoint> | import("../attributes.mjs").Breakpoint;
 };
+import m from 'mithril';

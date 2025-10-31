@@ -15,3 +15,4 @@ export type CellAttributes = {
     rowFromEnd?: CellControl[] | CellControl;
     rowSpan?: CellControl[] | CellControl;
 };
+import m from 'mithril';
