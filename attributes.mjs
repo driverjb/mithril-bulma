@@ -71,7 +71,7 @@ import m from 'mithril';
  * @prop {TextAlignment[]|TextAlignment} [alignment]
  * @prop {TextCase} [case]
  * @prop {boolean} [italic]
- * @prop {bolean} [underlined]
+ * @prop {boolean} [underlined]
  * @prop {TextWeight} [weight]
  * @prop {TextFontFamily} [font]
  */

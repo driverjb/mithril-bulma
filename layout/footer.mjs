@@ -7,7 +7,7 @@ import { extractClasses, toClass, is } from '../util.mjs';
  * https://bulma.io/documentation/layout/footer/
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes>}
  */
-export const Section = {
+export const Footer = {
   view: ({ attrs, children }) => {
     const extracted = extractClasses(attrs);
     const classes = toClass(extracted);

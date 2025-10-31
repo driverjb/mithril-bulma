@@ -70,7 +70,7 @@ export const IconLabel = {
  *
  * https://bulma.io/documentation/elements/icon/
  *
- * @type {m.Component<import('../attributes.mjs').MbStandardAttributes & {inline: boolean}}
+ * @type {m.Component<import('../attributes.mjs').MbStandardAttributes & {inline: boolean}>}
  */
 export const IconGroup = {
   view: ({ attrs, children }) => {

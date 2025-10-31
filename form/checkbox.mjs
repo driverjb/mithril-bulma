@@ -34,8 +34,8 @@ export const Checkbox = {
  *
  * https://bulma.io/documentation/form/checkbox/
  *
- * @param {boolean} checked
- * @returns {m.Component<import('../attributes.mjs').MbStandardAttributes & CheckboxAttributes> & {isChecked: ()=>boolean, setChecked(v: boolean)=>void}}
+ * @param {boolean} initialValue
+ * @returns {m.Component<import('../attributes.mjs').MbStandardAttributes & CheckboxAttributes> & {isChecked: ()=>boolean, setChecked: (v: boolean)=>void}}
  */
 export function CheckboxAuto(initialValue = false) {
   let value = initialValue;

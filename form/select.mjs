@@ -40,7 +40,7 @@ export const Select = {
       { class: selectClasses, ...rest },
       m(
         'select',
-        { multiple: multi, size: multi, oninput: onselect, oncreate: initialize },
+        { multiple: multiple, size: size, oninput: onselect, oncreate: initialize },
         children
       )
     );

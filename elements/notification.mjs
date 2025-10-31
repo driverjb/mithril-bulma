@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { Delete } from './delete.mjs';
-import { extractClasses, toClass } from '../util.mjs';
+import { extractClasses, toClass, is } from '../util.mjs';
 
 /**
  * @typedef {object} NotificationAttributes
@@ -27,7 +27,7 @@ import { extractClasses, toClass } from '../util.mjs';
  *
  * https://bulma.io/documentation/elements/notification/
  *
- * @type {m.Component<import('../attributes.mjs').MbStandardAttributes & NotificationAttributes}
+ * @type {m.Component<import('../attributes.mjs').MbStandardAttributes & NotificationAttributes>}
  */
 const Notification = {
   view: ({ attrs }) => {

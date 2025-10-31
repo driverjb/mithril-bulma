@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "checkJs": true,
+    "noEmit": false,
+    "outDir": "types",
+    "lib": ["ESNext", "DOM"],
+    "removeComments": false
+  },
+  "include": [
+    "columns/**/*.mjs",
+    "components/**/*.mjs",
+    "elements/**/*.mjs",
+    "form/**/*.mjs",
+    "grid/**/*.mjs",
+    "layout/**/*.mjs",
+    "attributes.mjs",
+    "util.mjs",
+    "index.mjs"
+  ]
+}

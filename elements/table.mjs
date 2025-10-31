@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { extractClasses, toClass } from '../util.mjs';
+import { extractClasses, toClass, is } from '../util.mjs';
 
 /**
  * @typedef {object} TableColor
@@ -44,7 +44,7 @@ export const Body = {
   view: ({ attrs, children }) => {
     const extracted = extractClasses(attrs);
     const classes = toClass(extracted);
-    return m('tbody', { class: classes, ...atrs }, children);
+    return m('tbody', { class: classes, ...attrs }, children);
   }
 };
 
@@ -55,7 +55,7 @@ export const Head = {
   view: ({ attrs, children }) => {
     const extracted = extractClasses(attrs);
     const classes = toClass(extracted);
-    return m('thead', { class: classes, ...atrs }, children);
+    return m('thead', { class: classes, ...attrs }, children);
   }
 };
 
@@ -76,7 +76,7 @@ export const Foot = {
 export const Row = {
   view: ({ attrs, children }) => {
     const extracted = extractClasses(attrs);
-    const { color } = attrs;
+    const { color, ...rest } = attrs;
     const classes = toClass(is({ color }), extracted);
     return m('tr', { class: classes, ...rest }, children);
   }
@@ -100,6 +100,7 @@ export const Cell = {
 export const HeaderCell = {
   view: ({ attrs, children }) => {
     const extracted = extractClasses(attrs);
+    const { color, ...rest } = attrs;
     const classes = toClass(is({ color }), extracted);
     return m('th', { class: classes, ...rest }, children);
   }

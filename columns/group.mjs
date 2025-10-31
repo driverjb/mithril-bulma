@@ -31,6 +31,7 @@ export const Group = {
       centeredVertical = false,
       multiline = false,
       centered = false,
+      narrowBreakpoint,
       ...rest
     } = attrs;
     const classes = toClass(

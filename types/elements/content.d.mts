@@ -1,11 +1,7 @@
-import m from 'mithril';
-import { extractClasses, toClass, is } from '../util.mjs';
-
 /**
  * @typedef {object} ContentAttributes
  * @prop {import('../attributes.mjs').Size} [size]
  */
-
 /**
  * A single class to handle WYSIWYG generated content, where only HTML tags are available
  *
@@ -26,11 +22,7 @@ import { extractClasses, toClass, is } from '../util.mjs';
  *
  * @type {m.Component<import('../attributes.mjs').MbStandardAttributes & ContentAttributes>}
  */
-export const Content = {
-  view: ({ attrs, children }) => {
-    const extracted = extractClasses(attrs);
-    const { size, ...rest } = attrs;
-    const classes = toClass(is({ size }), extracted);
-    return m('.content', { class: classes, ...rest }, children);
-  }
+export const Content: m.Component<import("../attributes.mjs").MbStandardAttributes & ContentAttributes>;
+export type ContentAttributes = {
+    size?: import("../attributes.mjs").Size;
 };

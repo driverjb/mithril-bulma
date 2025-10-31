@@ -1,11 +1,11 @@
 {
   "name": "mithril-bulma",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "A collection of flexible Mithril components based on Bulma CSS.",
   "main": "index.mjs",
-  "types": "index.d.ts",
+  "types": "types/index.d.mts",
   "scripts": {
-    "test": "vitest \".test.mjs\" --environment jsdom --coverage --coverage.include elements_new --exclude index.mjs"
+    "build:types": "tsc --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "jsdom": "^27.0.0",
     "mithril": "^2.3.3",
     "sass-embedded": "^1.93.2",
+    "typescript": "^5.9.3",
     "vite": "^7.1.9",
     "vitest": "^3.2.4"
   }
