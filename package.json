@@ -1,6 +1,6 @@
 {
   "name": "mithril-bulma",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A collection of flexible Mithril components based on Bulma CSS.",
   "main": "index.mjs",
   "types": "types/index.d.mts",
