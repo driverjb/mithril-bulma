@@ -24,7 +24,11 @@ export const Fixed = {
     const { autoBreakpoint = false, columnSize = null, ...rest } = attrs;
     const classes = toClass(
       autoBreakpoint ? 'has-auto-count' : null,
-      Array.isArray(columnSize) ? columnSize.map((c) => `has-${c}`) : `has-${columnSize}`,
+      columnSize == null
+        ? null
+        : Array.isArray(columnSize)
+        ? columnSize.map((c) => `has-${c}`)
+        : `has-${columnSize}`,
       extracted
     );
     return m('.fixed-grid', { class: classes, ...rest }, children);

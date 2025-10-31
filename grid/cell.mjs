@@ -21,6 +21,7 @@ import { extractClasses, toClass } from '../util.mjs';
  * @param {string} prefix
  */
 function prepareClass(data, prefix) {
+  if (data == null) return null;
   return Array.isArray(data) ? data.map((c) => `${prefix}${c}`) : `${prefix}${data}`;
 }
 
@@ -37,11 +38,11 @@ export const Cell = {
     const { colFromEnd, colSpan, colStart, rowFromEnd, rowSpan, rowStart, ...rest } = attrs;
     const classes = toClass(
       prepareClass(colFromEnd, 'is-col-from-end-'),
-      prepareClass(colFromEnd, 'is-col-start-'),
-      prepareClass(colFromEnd, 'is-col-span-'),
-      prepareClass(colFromEnd, 'is-row-from-end-'),
-      prepareClass(colFromEnd, 'is-row-start-'),
-      prepareClass(colFromEnd, 'is-row-span-'),
+      prepareClass(colStart, 'is-col-start-'),
+      prepareClass(colSpan, 'is-col-span-'),
+      prepareClass(rowFromEnd, 'is-row-from-end-'),
+      prepareClass(rowStart, 'is-row-start-'),
+      prepareClass(rowSpan, 'is-row-span-'),
       extracted
     );
     return m('.cell', { class: classes, ...rest }, children);
